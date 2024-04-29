@@ -134,3 +134,4 @@ C:\Users\ayush\Desktop\C#.net\Blogger\Blogger.web\obj\Debug\net8.0\refint\Blogge
 C:\Users\ayush\Desktop\C#.net\Blogger\Blogger.web\obj\Debug\net8.0\Blogger.web.pdb
 C:\Users\ayush\Desktop\C#.net\Blogger\Blogger.web\obj\Debug\net8.0\Blogger.web.genruntimeconfig.cache
 C:\Users\ayush\Desktop\C#.net\Blogger\Blogger.web\obj\Debug\net8.0\ref\Blogger.web.dll
+C:\Users\ayush\Desktop\C#.net\Blogger\Blogger.web\obj\Debug\net8.0\Blogger.web.sourcelink.json

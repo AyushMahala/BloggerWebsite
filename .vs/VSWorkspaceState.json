@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Blogger.web",
-    "\\Blogger.web\\Controllers"
+    "\\Blogger.web\\Controllers",
+    "\\Blogger.web\\Views",
+    "\\Blogger.web\\Views\\AdminTags"
   ],
   "SelectedNode": "\\Blogger.web\\Controllers\\AdminTagsController.cs",
   "PreviewInSolutionExplorer": false
