@@ -20,9 +20,17 @@ namespace Blogger.web.Repositories
             return blogPost;
         }
 
-        public Task<BlogPost?> DeleteAsync(Guid id)
+        public async Task<BlogPost?> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var existingBlog=  await bloggieDbContext.BlogPosts.FindAsync(id);
+        
+            if(existingBlog != null)
+            {
+                bloggieDbContext.BlogPosts.Remove(existingBlog);
+                await bloggieDbContext.SaveChangesAsync();
+                return existingBlog;
+            }
+            return null;
         }
 
         public async Task<IEnumerable<BlogPost>> GetAllAsync()
@@ -32,12 +40,32 @@ namespace Blogger.web.Repositories
 
         public Task<BlogPost?> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return bloggieDbContext.BlogPosts.Include(x=>x.Tags).FirstAsync(x => x.Id == id);
+
         }
 
-        public Task<BlogPost?> UpdateAsync(BlogPost blogPost)
+        public async Task<BlogPost?> UpdateAsync(BlogPost blogPost)
         {
-            throw new NotImplementedException();
+            var existingTag = await bloggieDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == blogPost.Id);
+        
+            if (existingTag != null)
+            {
+                existingTag.Id = blogPost.Id;
+                existingTag.Heading = blogPost.Heading;
+                existingTag.PageTitle = blogPost.PageTitle;
+                existingTag.Content = blogPost.Content;
+                existingTag.ShortDescription = blogPost.ShortDescription;
+                existingTag.Author = blogPost.Author;
+                existingTag.FeaturedImageUrl = blogPost.FeaturedImageUrl;
+                existingTag.UrlHandle = blogPost.UrlHandle;
+                existingTag.visible = blogPost.visible;
+                existingTag.PublishedDate = blogPost.PublishedDate;
+                existingTag.Tags = blogPost.Tags;
+
+                await bloggieDbContext.SaveChangesAsync();
+                return existingTag;
+            }
+            return null;
         }
     }
 }
